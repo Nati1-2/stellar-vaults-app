@@ -1,13 +1,15 @@
-const express = require('express');
+import express from "express";
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  // Mock vault data
-  const vaults = [
-    { id: 'vault1', name: 'USDC Stable Vault', apy: 0.12 },
-    { id: 'vault2', name: 'XLM Growth Vault', apy: 0.18 }
-  ];
+// Dummy vaults list (can connect to DB later)
+const vaults = [
+  { id: 1, name: "USDC Pool", apy: "5%", totalLocked: "10,000 USDC" },
+  { id: 2, name: "XLM Staking", apy: "3%", totalLocked: "50,000 XLM" }
+];
+
+router.get("/", (req, res) => {
   res.json(vaults);
 });
 
-module.exports = router;
+export default router;

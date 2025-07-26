@@ -1,24 +1,15 @@
-const express = require('express');
+import express from "express";
+
 const router = express.Router();
 
-router.post('/', (req, res) => {
-  const { vaultId, amount, asset, userAddress } = req.body;
-
-  if (!vaultId || !amount || !asset || !userAddress) {
-    return res.status(400).json({ error: 'Missing required fields' });
+// This is just a placeholder route (no blockchain yet)
+router.post("/", (req, res) => {
+  const { address, amount, asset } = req.body;
+  if (!address || !amount) {
+    return res.status(400).json({ error: "Missing parameters" });
   }
 
-  // Simulate a deposit success response
-  res.json({
-    success: true,
-    tx: {
-      txHash: 'mock-txhash-1234567890',
-      vaultId,
-      amount,
-      asset,
-      userAddress
-    }
-  });
+  res.json({ message: `Deposited ${amount} ${asset || "XLM"} to ${address}` });
 });
 
-module.exports = router;
+export default router;
